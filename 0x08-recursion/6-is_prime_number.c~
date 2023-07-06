@@ -1,0 +1,36 @@
+#include "main.h"
+
+/**
+ * prime_num - check for prime
+ *
+ * @n: number
+ * @i: testing num
+ *
+ * Return: true or false
+ */
+
+int prime_num(int i, int n)
+{
+	if (i > n)
+		return (1);
+	if (n % i)
+		return (prime_num(i + 1, n));
+	else
+		return (0);
+}
+
+/**
+ * is_prime_number - checks if prime
+ *
+ * @n: number
+ *
+ * Return: true if prime, false otherwise
+ */
+
+
+int is_prime_number(int n)
+{
+	if (n < 2)
+		return (0);
+	return (prime_num(2, n));
+}

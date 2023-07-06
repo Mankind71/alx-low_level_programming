@@ -1,0 +1,34 @@
+#include "main.h"
+
+/**
+ * sqrt_num - recursive fnx to get sqrt of a num
+ *
+ * @n: number
+ * @i: testing num
+ *
+ * Return: i-if i*i==n, -1 if n doesn't have a natural sqrt
+ */
+
+int sqrt_num(int i, int n)
+{
+	if (i * i == n)
+		return (i);
+	else if (i * i > n)
+		return (-1);
+	else
+		return (sqrt_num(i+1, n));
+}
+
+/**
+ * _sqrt_recursion - return sqrt of a num
+ *
+ * @n: number
+ *
+ * Return: sqrt of n
+ */
+
+
+int _sqrt_recursion(int n)
+{
+	return (sqrt_num(1, n));
+}
