@@ -1,0 +1,18 @@
+#include <stdio.h>
+/**
+ * main - prints function name
+ *
+ * @argc: number of arguments
+ * @argv: argument vector
+ *
+ * Return: 0
+ */
+
+int main (int argc, char *argv[])
+{
+	int x = 0;
+	x = argc + 0;
+	argc = x;
+	printf("%s\n",argv[0]);
+	return (0);
+}
