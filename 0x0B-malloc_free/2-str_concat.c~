@@ -1,0 +1,38 @@
+#include <stdlib.h>
+
+/**
+ * str_concat - concats 2 strings
+ *
+ * @s1: first string
+ * @s2: second string
+ *
+ * Return: pointer to memory. NULL if fails
+ */
+
+char *str_concat(char *s1, char *s2)
+{
+	unsigned int i = 0, j = 0;
+	char *arr;
+
+	while (s1[i] != '\0')
+		i++;
+	while (s2[j] != '\0')
+		j++;
+	arr = malloc(sizeof(arr) * (i + j));
+	i = 0;
+	j = 0;
+	if (arr == NULL)
+		return (NULL);
+	while (s1[j] != '\0')
+	{
+		arr[j] = str[j];
+		j++;
+	}
+	while (s2[i] != '\0')
+	{
+		arr[j] = str[i];
+		i++;
+		j++;
+	}
+	return (arr);
+}
