@@ -21,7 +21,7 @@ char **strtow(char *str)
 	int i, num_of_words, num_of_lets, z;
 	int str_len;
 	int in_word, word_index, start_index;
-	in_word = 0;
+	in_word = z = 0;
 	word_index = 0;
 	start_index = 0;
 
@@ -34,11 +34,7 @@ char **strtow(char *str)
 	}
 	if (!num_of_lets)
 		return (NULL);
-	for (i = 0; str[i]; i++)
-	{
-		str_len++;
-	}
-	for (z = 0; z <= str_len; z++)
+	while (str[z] != '\0')
 	{
 		if (!is_space(str[z]))
 		{
@@ -52,7 +48,11 @@ char **strtow(char *str)
 		{
 			in_word = 0;
 		}
-		i++;
+		z++;
+	}
+	for (i = 0; str[i]; i++)
+	{
+		str_len++;
 	}
 
 	printf("%d\n", str_len);
@@ -90,7 +90,7 @@ char **strtow(char *str)
 					free(arr);
 					return (NULL);
 				}
-
+				
 				for (int k = 0; k < word_length; k++)
 				{
 
