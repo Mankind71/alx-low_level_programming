@@ -18,9 +18,10 @@ int is_space(char c)
 char **strtow(char *str)
 {
 	char **arr;
-	int i, num_of_words, num_of_lets, z;
+	int i, num_of_words, num_of_lets, z, k, l, j;
 	int str_len;
 	int in_word, word_index, start_index;
+	int word_length;
 	in_word = z = 0;
 	word_index = 0;
 	start_index = 0;
@@ -55,15 +56,12 @@ char **strtow(char *str)
 		str_len++;
 	}
 
-	printf("%d\n", str_len);
-	printf("%d\n", num_of_words);
-	printf("%d\n", num_of_lets);
 	arr = (char **)malloc(sizeof(char *) * (num_of_words + 1));
 	if (arr == NULL)
 		return (NULL);
 
 	in_word = 0;
-	for (int j = 0; j < str_len; j++)
+	for (j = 0; j < str_len; j++)
 	{
 		if (!is_space(str[j]) && str[j] != '\0')
 		{
@@ -78,26 +76,22 @@ char **strtow(char *str)
 			if (in_word)
 			{
 				in_word = 0;
-				int word_length = j - start_index;
+				word_length = j - start_index;
 				arr[word_index] = (char *)malloc((word_length + 1) * sizeof(char));
 				if (arr[word_index] == NULL)
 				{
-					// Memory allocation failed, free previously allocated memory
-					for (int k = 0; k < word_index; k++)
+					for (k = 0; k < word_index; k++)
 					{
 						free(arr[k]);
 					}
 					free(arr);
 					return (NULL);
 				}
-				
-				for (int k = 0; k < word_length; k++)
-				{
 
-					printf("%c", str[start_index + k]);
-					arr[word_index][k] = str[start_index + k];
+				for (l = 0; l < word_length; l++)
+				{
+					arr[word_index][l] = str[start_index + l];
 				}
-				printf("\n");
 				arr[word_index][word_length] = '\0';
 				word_index++;
 			}
