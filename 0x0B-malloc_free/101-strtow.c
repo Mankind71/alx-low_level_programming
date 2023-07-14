@@ -22,6 +22,7 @@ char **strtow(char *str)
 	int str_len;
 	int in_word, word_index, start_index;
 	int word_length;
+
 	in_word = z = 0;
 	word_index = 0;
 	start_index = 0;
@@ -56,6 +57,7 @@ char **strtow(char *str)
 		str_len++;
 	}
 
+	printf("%ld\n",strlen("xade"));
 	arr = (char **)malloc(sizeof(char *) * (num_of_words + 1));
 	if (arr == NULL)
 		return (NULL);
