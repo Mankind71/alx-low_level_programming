@@ -6,11 +6,14 @@
  * @array: address of array containing functions
  * @size: size of arr
  * @action: action to perform
-*/
+ */
 
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
 	size_t i;
+
+	if (size < 1)
+		return;
 
 	for (i = 0; i < size; i++)
 	{
