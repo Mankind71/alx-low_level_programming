@@ -2,10 +2,10 @@
 
 /**
  * print_name - prints a name
- * 
+ *
  * @name: name to print
  * @f: pointer to the name
- * 
+ *
  * Return: Nothing
  */
 
