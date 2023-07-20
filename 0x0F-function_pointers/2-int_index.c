@@ -9,3 +9,8 @@
  * 
  * Return: -1 if no match of size <= 0, 
 */
+
+int int_index(int *array, int size, int (*cmp)(int))
+{
+    
+}
