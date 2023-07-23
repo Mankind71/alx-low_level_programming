@@ -3,9 +3,9 @@
 #include <stdarg.h>
 
 /**
- * print_strings - prints strings
+ * print_all - prints all
  * 
- * @separator: its separator
+ * @format: a list of types of args
  * @n: num of args
 */
 
@@ -20,7 +20,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	{
 		if (va_arg(ap, char *))
 			printf("%s", va_arg(ap, char *));
-		else
+        else
 			printf("nil");
 		if (i < n - 1)
 		{
