@@ -6,31 +6,47 @@
  * print_all - prints all
  * 
  * @format: a list of types of args
- * @n: num of args
 */
 
 
-void print_strings(const char *separator, const unsigned int n, ...)
+void print_all(const char * const format, ...)
 {
 	va_list ap;
 	unsigned int i;
+    char *str, *sep = "";
 
-	va_start(ap, n);
-	for (i = 0; i < n; i++)
+	va_start(ap, format);
+    
+	if (format)
 	{
-		if (va_arg(ap, char *))
-			printf("%s", va_arg(ap, char *));
-        else
-			printf("nil");
-		if (i < n - 1)
+		while (format[i])
 		{
-			if (separator != NULL)
-				printf("%s", separator);
-		}
-		else
-		{
-			printf("\n");
+			switch (format[i])
+			{
+				case 'c':
+					printf("%s%c", sep, va_arg(ap, int));
+					break;
+				case 'i':
+					printf("%s%d", sep, va_arg(ap, int));
+					break;
+				case 'f':
+					printf("%s%f", sep, va_arg(ap, double));
+					break;
+				case 's':
+					str = va_arg(ap, char *);
+					if (!str)
+						str = "(nil)";
+					printf("%s%s", sep, str);
+					break;
+				default:
+					i++;
+					continue;
+			}
+			sep = ", ";
+			i++;
 		}
 	}
-	va_end(ap);
+	printf("\n");
+    
+    va_end(ap);
 }
