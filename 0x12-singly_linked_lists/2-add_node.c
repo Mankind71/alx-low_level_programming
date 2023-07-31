@@ -8,7 +8,7 @@
  * Return: number of list objects
  */
 
-size_t add_node(list_t **head, const char *str)
+list_t *add_node(list_t **head, const char *str)
 {
 	list_t *ptr = NULL;
 	unsigned int x = 0;
@@ -20,10 +20,10 @@ size_t add_node(list_t **head, const char *str)
 	if (!ptr)
 		return (0);
 
-	ptr->next = head;
+	ptr->next = (*head);
 	ptr->str = strdup(str);
 	ptr->len = x;
-	*head = ptr;
+	(*head) = ptr;
 
 	return (*head);
 }
