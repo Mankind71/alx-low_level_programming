@@ -4,7 +4,7 @@
  * list_len - a function that returns num of elem in a list
  * @h: the pointer to the list
  * Return: number of list elems
-*/
+ */
 
 size_t list_len(const list_t *h)
 {
