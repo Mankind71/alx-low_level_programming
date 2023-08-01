@@ -5,7 +5,7 @@
  * at the beginning of a list_t list.
  * @head: the pointer to the pointer to the head
  * @str: string to copy to the first elem
- * Return: number of list objects
+ * Return: pointer to head node
  */
 
 list_t *add_node(list_t **head, const char *str)
