@@ -14,7 +14,7 @@ void print_binary(unsigned long int n)
 
 	if (n == 0)
 	{
-		printf("0");
+		_putchar('0');
 		return;
 	}
 	num_bits = 32;
@@ -25,10 +25,10 @@ void print_binary(unsigned long int n)
 		if (bit == 1)
 		{
 			leadingZeros = 0;
-			printf("%d", bit);
+			_putchar(bit + '0');
 		} else if (!leadingZeros)
 		{
-			printf("%d", bit);
+			_putchar(bit + '0');
 		}
 	}
 	printf("\n");
