@@ -17,7 +17,7 @@ void print_binary(unsigned long int n)
 		_putchar('0');
 		return;
 	}
-	num_bits = 32;
+	num_bits = sizeof(n) * 8;
 
 	for (i = num_bits - 1; i >= 0; i--)
 	{
