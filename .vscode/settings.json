@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.js": "javascriptreact",
+        "variadic_functions.h": "c",
+        "main.h": "c",
+        "fcntl.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c"
+    }
+}
