@@ -65,7 +65,7 @@ int main(int ac, char **av)
 		fd2 = open(av[2], O_WRONLY | O_APPEND);
 	}
 	free(ch);
-	close(fd1);
-	close(fd2);
+	close_file(fd1);
+	close_file(fd2);
 	return (0);
 }
