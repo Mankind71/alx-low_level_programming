@@ -21,13 +21,15 @@ void close_file(int fd)
  * check_read - check read values.
  * @fd: The file descriptor
  * @val: av[1]
+ * @ch: buffer
  */
 
-void check_read(int fd, char *val)
+void check_read(char *ch, int fd, char *val)
 {
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", val);
+		free(ch);
 		exit(98);
 	}
 }
@@ -46,23 +48,24 @@ int main(int ac, char **av)
 	int fd1, fd2, rdfd1, wrfd2, chsize = 1024;
 	char *ch;
 
-	if (ac != 3)
-	{
-		dprintf(2, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
-	fd1 = open(av[1], O_RDONLY);
 	ch = malloc(sizeof(char) * chsize);
-
 	if (ch == NULL)
 	{
 		dprintf(STDERR_FILENO,
 				"Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
+
+	if (ac != 3)
+	{
+		dprintf(2, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
+	fd1 = open(av[1], O_RDONLY);
+	check_read(ch, fd1, av[1]);
+
 	rdfd1 = read(fd1, ch, chsize);
-	check_read(fd1, av[1]);
-	check_read(rdfd1, av[1]);
+	check_read(ch, rdfd1, av[1]);
 	fd2 = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	while (rdfd1 > 0)
 	{
@@ -74,7 +77,7 @@ int main(int ac, char **av)
 			exit(99);
 		}
 		rdfd1 = read(fd1, ch, chsize);
-		check_read(rdfd1, av[1]);
+		check_read(ch, rdfd1, av[1]);
 		fd2 = open(av[2], O_WRONLY | O_APPEND);
 	}
 	free(ch);
