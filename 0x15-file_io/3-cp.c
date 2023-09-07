@@ -46,14 +46,14 @@ int main(int ac, char **av)
 		exit(99);
 	}
 	rdfd1 = read(fd1, ch, chsize);
-	if (fd1 == -1 || rdfd1 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
 	fd2 = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	while (rdfd1 > 0)
 	{
+		if (fd1 == -1 || rdfd1 == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+			exit(98);
+		}
 		wrfd2 = write(fd2, ch, rdfd1);
 		if (fd2 == -1 || wrfd2 == -1)
 		{
